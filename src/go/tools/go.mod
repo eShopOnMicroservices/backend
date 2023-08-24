@@ -4,6 +4,7 @@ go 1.21.0
 
 require (
 	github.com/golangci/golangci-lint v1.54.2
+	github.com/incu6us/goimports-reviser/v3 v3.4.1
 	mvdan.cc/gofumpt v0.5.0
 )
 
