@@ -1,0 +1,38 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: detect-private-key
+
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.13.7
+    hooks:
+      - id: typos
+        args: [--exclude=go.mod, --exclude=go.sum]
+
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v2.1.1
+    hooks:
+      # pre-commit install --hook-type commit-msg
+      - id: conventional-pre-commit
+        name: conventional-commits
+        alias: conventional-commits
+        stages: [commit-msg]
+        args:
+          [
+            build,
+            chore,
+            ci,
+            deploy,
+            docs,
+            feat,
+            fix,
+            perf,
+            refactor,
+            revert,
+            style,
+            test,
+          ]
