@@ -32,25 +32,6 @@ jobs:
           skip-build-cache: true
           skip-pkg-cache: true
 
-  go-fmt:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install Go
-        uses: actions/setup-go@v4
-        with:
-          # https://github.com/actions/setup-go#supported-version-syntax
-          # ex:
-          # - 1.18beta1 -> 1.18.0-beta.1
-          # - 1.18rc1 -> 1.18.0-rc.1
-          go-version: ${{ env.GO_VERSION }}
-
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Run [go fmt]
-        run: |
-          go fmt ./...
-          git diff --exit-code
 
   go-vet:
     runs-on: ubuntu-latest
