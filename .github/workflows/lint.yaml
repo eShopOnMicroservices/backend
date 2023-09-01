@@ -6,70 +6,7 @@ on:
   push:
     branches: [main]
 
-env:
-  GO_VERSION: "1.21"
-
 jobs:
-  golangci-lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install Go
-        uses: actions/setup-go@v4
-        with:
-          # https://github.com/actions/setup-go#supported-version-syntax
-          # ex:
-          # - 1.18beta1 -> 1.18.0-beta.1
-          # - 1.18rc1 -> 1.18.0-rc.1
-          go-version: ${{ env.GO_VERSION }}
-
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Run [golangci-lint]
-        uses: golangci/golangci-lint-action@v3.7.0
-        with:
-          version: latest
-          skip-build-cache: true
-          skip-pkg-cache: true
-
-  go-fmt:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install Go
-        uses: actions/setup-go@v4
-        with:
-          # https://github.com/actions/setup-go#supported-version-syntax
-          # ex:
-          # - 1.18beta1 -> 1.18.0-beta.1
-          # - 1.18rc1 -> 1.18.0-rc.1
-          go-version: ${{ env.GO_VERSION }}
-
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Run [go fmt]
-        run: |
-          go fmt ./...
-          git diff --exit-code
-
-  go-vet:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install Go
-        uses: actions/setup-go@v4
-        with:
-          # https://github.com/actions/setup-go#supported-version-syntax
-          # ex:
-          # - 1.18beta1 -> 1.18.0-beta.1
-          # - 1.18rc1 -> 1.18.0-rc.1
-          go-version: ${{ env.GO_VERSION }}
-
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Run [go vet]
-        run: |
-          go vet ./...
 
   typos:
     runs-on: ubuntu-latest
@@ -80,7 +17,7 @@ jobs:
       - name: Run [typos]
         uses: crate-ci/typos@v1.16.8
         with:
-          config: .typos.toml
+          config: ./config/.typos.toml
 
   pre-commit:
     runs-on: ubuntu-latest
@@ -93,28 +30,10 @@ jobs:
             end-of-file-fixer,
             check-yaml,
             detect-private-key,
-            goimports-reviser,
-            go-fumpt,
-            golines,
           ]
     steps:
       - name: Install Python
         uses: actions/setup-python@v4
-
-      - name: Install Go
-        uses: actions/setup-go@v4
-        with:
-          # https://github.com/actions/setup-go#supported-version-syntax
-          # ex:
-          # - 1.18beta1 -> 1.18.0-beta.1
-          # - 1.18rc1 -> 1.18.0-rc.1
-          go-version: ${{ env.GO_VERSION }}
-
-      - name: Install Go tools
-        run: |
-          go install github.com/incu6us/goimports-reviser/v3@latest
-          go install mvdan.cc/gofumpt@latest
-          go install github.com/segmentio/golines@latest
 
       - name: Checkout code
         uses: actions/checkout@v3
