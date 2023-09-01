@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "ricardoerikson.vscode-go-impl-methods",
+    "golang.go",
+    "soren.go-coverage-viewer",
+    "liuchao.go-struct-tag",
+    "premparihar.gotestexplorer",
+    "nate-scarlet.golang-code-actions",
+    "plex.vscode-protolint",
+    "zxh404.vscode-proto3"
+  ]
+}
