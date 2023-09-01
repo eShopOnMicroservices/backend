@@ -1,6 +1,6 @@
 module github.com/eShopOnMicroservices/backend/src/go/tools
 
-go 1.21.0
+go 1.21
 
 require (
 	github.com/golangci/golangci-lint v1.54.2
