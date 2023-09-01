@@ -17,7 +17,7 @@ jobs:
       - name: Run [typos]
         uses: crate-ci/typos@v1.16.8
         with:
-          config: /config/.typos.toml
+          config: ./config/.typos.toml
 
   pre-commit:
     runs-on: ubuntu-latest
