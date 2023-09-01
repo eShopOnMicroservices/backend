@@ -30,6 +30,7 @@ jobs:
       - name: Run [golangci-lint]
         uses: golangci/golangci-lint-action@v3.7.0
         with:
+          working-directory: ${{ env.GO_SRC_PATH }}
           version: latest
           skip-build-cache: true
           skip-pkg-cache: true
