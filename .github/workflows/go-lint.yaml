@@ -51,8 +51,8 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run [go vet]
-        run: |
-          go vet ${{ env.GO_SRC_PATH }}...
+        working-directory: ${{ env.GO_SRC_PATH }}
+        run: go vet ./...
 
   pre-commit:
     runs-on: ubuntu-latest
