@@ -1,0 +1,11 @@
+[type.mod]
+extend-glob = ["**/go.mod"]
+check-file = false
+
+[type.sum]
+extend-glob = ["**/go.sum"]
+check-file = false
+
+[type.wire]
+extend-glob = ["**/*wire*.go"]
+check-file = false

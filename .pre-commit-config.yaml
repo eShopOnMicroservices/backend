@@ -11,12 +11,11 @@ repos:
     rev: v1.13.7
     hooks:
       - id: typos
-        args: [--config, ./config/.typos.toml]
+        args: [--config, ./.config/typos.toml]
 
   - repo: https://github.com/compilerla/conventional-pre-commit
     rev: v2.1.1
     hooks:
-      # pre-commit install --hook-type commit-msg
       - id: conventional-pre-commit
         name: conventional-commits
         alias: conventional-commits
@@ -36,27 +35,3 @@ repos:
             style,
             test,
           ]
-
-  - repo: https://github.com/TekWizely/pre-commit-golang
-    rev: v1.0.0-rc.1
-    hooks:
-      - id: go-mod-tidy
-        name: go-mod
-        alias: go-mod
-        exclude: tools|wire_gen.go|mock
-        files: ^src/go/.+\.go$
-      - id: go-fumpt
-        name: go-fumpt
-        alias: go-fumpt
-        files: ^src/go/.+\.go$
-        exclude: tools|wire_gen.go|mock
-      - id: my-cmd
-        name: goimports-reviser
-        alias: goimports-reviser
-        exclude: tools|wire_gen.go|mock
-        args: [goimports-reviser, ./src/go]
-      - id: my-cmd
-        name: golines
-        alias: golines
-        exclude: tools|wire_gen.go|mock
-        args: [golines, ./src/go, -w]
