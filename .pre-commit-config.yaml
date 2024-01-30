@@ -34,3 +34,11 @@ repos:
             style,
             test,
           ]
+
+  - repo: https://github.com/sqlfluff/sqlfluff
+    rev: 2.3.5
+    hooks:
+      - id: sqlfluff-lint
+        args: [--config, ".config/.sqlfluff"]
+      - id: sqlfluff-fix
+        args: [--config, ".config/.sqlfluff"]
